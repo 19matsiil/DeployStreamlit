@@ -7,7 +7,7 @@ from sklearn.cluster import KMeans
 
 st.title("KMeans Clustering - Mall Customer")
 
-uploaded_file = st.file_uploader("Upload file Excel dataset (.xlsx)", type=["xlsx"])
+uploaded_file = st.file_uploader("Upload file Excel dataset (mall_costumer.xlsx)", type=["xlsx"])
 
 if uploaded_file:
     dataset = pd.read_excel(uploaded_file)
