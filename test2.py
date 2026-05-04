@@ -19,7 +19,6 @@ if uploaded_file:
     st.write("Cek missing value:", X.isnull().sum().to_dict())
     st.write(X.describe())
 
-    # Elbow Method
     wcss = []
     for i in range(1, 15):
         kmeans = KMeans(n_clusters=i, random_state=14)
@@ -33,7 +32,6 @@ if uploaded_file:
     ax1.set_ylabel("WCSS")
     st.pyplot(fig1)
 
-    # KMeans dengan 5 cluster
     kmeans = KMeans(n_clusters=5, random_state=14)
     kmeans.fit(X)
 
@@ -41,7 +39,6 @@ if uploaded_file:
     hasil_kmeans["cluster"] = kmeans.labels_
     st.write(hasil_kmeans.head())
 
-    # Bar plot frekuensi cluster
     fig2, ax2 = plt.subplots()
     cluster_x = hasil_kmeans["cluster"].value_counts().index
     cluster_y = hasil_kmeans["cluster"].value_counts().values
@@ -51,7 +48,6 @@ if uploaded_file:
     ax2.set_ylabel("Frekuensi")
     st.pyplot(fig2)
 
-    # Scatter plot hasil clustering
     colors = ["blue", "orange", "green", "red", "magenta"]
     centroid_cluster = kmeans.cluster_centers_
 
@@ -68,7 +64,6 @@ if uploaded_file:
     ax3.legend()
     st.pyplot(fig3)
 
-    # Tambahkan CustomerID dan simpan
     hasil_kmeans["CustomerID"] = dataset["CustomerID"]
     st.write(hasil_kmeans.head())
 
